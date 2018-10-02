@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane onKeyPressed="#keyListenerCtrlZ" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uaa.javamsgfx.controller.MainScreenController">
+    <children>
+        <VBox spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <HBox minHeight="20.0" spacing="5.0">
+                    <children>
+                        <ColorPicker fx:id="clrPicker" minHeight="20.0" minWidth="150.0">
+                            <HBox.margin>
+                                <Insets right="10.0" />
+                            </HBox.margin>
+
+
+                        </ColorPicker>
+                        <RadioButton fx:id="rbOval" minWidth="117.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="117.0" selected="true" text="Окружность">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="grpFigur" />
+                            </toggleGroup>
+                     <HBox.margin>
+                        <Insets top="3.0" />
+                     </HBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="rbTriangle" minWidth="108.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="108.0" text="Треугольник" toggleGroup="$grpFigur">
+                     <HBox.margin>
+                        <Insets top="3.0" />
+                     </HBox.margin></RadioButton>
+                        <RadioButton fx:id="rbSquare" minWidth="79.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="79.0" text="Квадрат" toggleGroup="$grpFigur">
+                     <HBox.margin>
+                        <Insets top="3.0" />
+                     </HBox.margin></RadioButton>
+                        <Label text="Длина/Радиус">
+                            <HBox.margin>
+                                <Insets top="3.0" />
+                            </HBox.margin>
+                        </Label>
+                  <Slider fx:id="sizeSlider" max="350.0" maxWidth="100.0" min="5.0" onMouseReleased="#lblSizeChange" value="50.0">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </Slider>
+                  <Label fx:id="lblSize" maxWidth="25.0" minWidth="25.0" prefWidth="25.0" text="50">
+                     <HBox.margin>
+                        <Insets top="3.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Угол">
+                     <HBox.margin>
+                        <Insets top="3.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Slider fx:id="gradSlider" blockIncrement="5.0" max="360.0" maxWidth="100.0" onMouseReleased="#lblGradChange">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </Slider>
+                  <Label fx:id="lblGrad" maxHeight="25.0" minWidth="25.0" prefWidth="25.0" text="0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Button fx:id="btnClear" mnemonicParsing="false" onAction="#clearAction" prefHeight="25.0" prefWidth="107.0" text="Очистить" />
+                    </children>
+                    <VBox.margin>
+                        <Insets top="5.0" />
+                    </VBox.margin>
+                </HBox>
+                <AnchorPane style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Canvas fx:id="drawCanvas" height="550.0" onKeyPressed="#altKeyPress" onMouseClicked="#clickListener" onMouseMoved="#viewFigureFromMouse" onScroll="#scrollSizeChange" width="1014.0" />
+                    </children>
+                </AnchorPane>
+            </children>
+        </VBox>
+    </children>
+    <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+    </padding>
+</AnchorPane>
